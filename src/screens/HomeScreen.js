@@ -1,17 +1,25 @@
-import React from "react"
-import {View,StyleSheet,Text} from "react-native"
-import {StatusBar} from "react-native"
-
+import React, { useContext } from "react";
+import { View, StyleSheet, Text, FlatList } from "react-native";
+import { StatusBar } from "react-native";
+import BlogContext from "../context/BlogContext";
 
 const HomeScreen = () => {
-    return (
-        <View>
-            <Text>This is Home Screen</Text>
-            <StatusBar barStyle="light-content"/>
-        </View>
-    )
-}
+  const blogPosts = useContext(BlogContext);
+  return (
+    <View>
+      <StatusBar barStyle="light-content" />
+      <Text>This is Home Screen</Text>
+      <FlatList
+        data={blogPosts}
+        renderItem={({ item }) => {
+          return <Text>{item.title}</Text>;
+        }}
+        keyExtractor={(post) => post.title}
+      />
+    </View>
+  );
+};
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
 
-export default HomeScreen
+export default HomeScreen;
