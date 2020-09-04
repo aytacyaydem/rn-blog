@@ -28,6 +28,19 @@ const HomeScreen = ({navigation}) => {
   );
 };
 
+HomeScreen.navigationOptions = ({navigation}) => {
+  return {
+    headerRight : () =>  {
+      return (
+      <TouchableOpacity onPress={() => navigation.navigate("Create")}>
+      <Feather name="plus" size={30} color="white" />
+      </TouchableOpacity>
+      
+      )
+    }
+  }
+}
+
 const styles = StyleSheet.create({
   row:{
     flexDirection:"row",
