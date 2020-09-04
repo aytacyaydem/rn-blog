@@ -1,19 +1,24 @@
 import React, { useContext,useEffect } from "react";
-import { View, StyleSheet, Text, FlatList,Button } from "react-native";
+import { View, StyleSheet, Text, FlatList,Button,TouchableOpacity } from "react-native";
 import { StatusBar } from "react-native";
-import BlogContext from "../context/BlogContext";
+import {Context} from "../context/BlogContext";
+import {Feather} from "@expo/vector-icons"
 
 const HomeScreen = () => {
-  const {data,addBlogPost} = useContext(BlogContext);
+  const {state,addBlogPost,deleteBlogPost} = useContext(Context);
   return (
     <View>
       <StatusBar barStyle="light-content" />
-      <Text>This is Home Screen</Text>
       <Button title="Basıver" onPress={addBlogPost}/>
       <FlatList
-        data={data}
+        data={state}
         renderItem={({ item }) => {
-          return <Text>{item.title}</Text>;
+          return (
+            <View style={styles.row}>
+            <Text style={styles.title}>{item.title}-{item.id}</Text>
+            <TouchableOpacity onPress={() => deleteBlogPost(item.id)}><Feather style={styles.icon} name="trash"/></TouchableOpacity>
+            </View>
+          )
         }}
         keyExtractor={(post) => post.title}
       />
@@ -21,6 +26,21 @@ const HomeScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  row:{
+    flexDirection:"row",
+    justifyContent:"space-between",
+    paddingVertical:20,
+    paddingHorizontal:10,
+    borderTopWidth:1,
+    borderColor:"black",
+  },
+  title:{
+    fontSize:18
+  },
+  icon:{
+    fontSize:24
+  }
+});
 
 export default HomeScreen;
