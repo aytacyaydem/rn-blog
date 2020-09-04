@@ -1,10 +1,10 @@
-import React, { useContext,useEffect } from "react";
+import React, { useContext} from "react";
 import { View, StyleSheet, Text, FlatList,Button,TouchableOpacity } from "react-native";
 import { StatusBar } from "react-native";
 import {Context} from "../context/BlogContext";
 import {Feather} from "@expo/vector-icons"
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const {state,addBlogPost,deleteBlogPost} = useContext(Context);
   return (
     <View>
@@ -14,10 +14,12 @@ const HomeScreen = () => {
         data={state}
         renderItem={({ item }) => {
           return (
+            <TouchableOpacity onPress={() => navigation.navigate("BlogContent",{id:item.id})}>
             <View style={styles.row}>
             <Text style={styles.title}>{item.title}-{item.id}</Text>
             <TouchableOpacity onPress={() => deleteBlogPost(item.id)}><Feather style={styles.icon} name="trash"/></TouchableOpacity>
             </View>
+            </TouchableOpacity>
           )
         }}
         keyExtractor={(post) => post.title}
