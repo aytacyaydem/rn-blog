@@ -32,7 +32,7 @@ HomeScreen.navigationOptions = ({navigation}) => {
     headerRight : () =>  {
       return (
       <TouchableOpacity onPress={() => navigation.navigate("Create")}>
-      <Feather name="plus" size={30} color="white" />
+      <Feather style={{paddingRight:10}}name="plus" size={30} color="white" />
       </TouchableOpacity>
       
       )
