@@ -5,7 +5,9 @@ import BlogForm from "../components/BlogForm"
 
 const CreateScreen = ({navigation}) => {
     const {addBlogPost} = useContext(Context)
-    return <BlogForm />
+    return <BlogForm onSubmit={(title,content) => {
+        addBlogPost(title,content,() => navigation.navigate("Home"))
+    }}/>
 }
 
 
