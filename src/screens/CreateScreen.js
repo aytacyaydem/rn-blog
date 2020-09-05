@@ -1,8 +1,6 @@
 import React,{useState,useContext} from "react"
 import {View,StyleSheet,Text,TextInput,Button} from "react-native"
 import {Context} from "../context/BlogContext"
-import { Feather } from '@expo/vector-icons';
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 const CreateScreen = ({navigation}) => {
     const [title,setTitle] = useState("")
@@ -23,17 +21,6 @@ const CreateScreen = ({navigation}) => {
     )
 }
 
-CreateScreen.navigationOptions = () => {
-    return {
-        headerRight : () => {
-            return (
-                <TouchableOpacity>
-                <Feather style={{paddingRight:10}}name="edit" size={24} color="white" />
-                </TouchableOpacity>
-            )
-        }
-    }
-}
 
 const styles = StyleSheet.create({
     input:{

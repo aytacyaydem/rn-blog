@@ -5,12 +5,14 @@ import HomeScreen from "./src/screens/HomeScreen";
 import {Provider} from "./src/context/BlogContext"
 import BlogContent from "./src/screens/BlogContent";
 import CreateScreen from "./src/screens/CreateScreen";
+import EditScreen from "./src/screens/EditScreen";
 
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
     BlogContent:BlogContent,
-    Create:CreateScreen
+    Create:CreateScreen,
+    Edit:EditScreen
   },
   {
     initialRouteName: "Home",

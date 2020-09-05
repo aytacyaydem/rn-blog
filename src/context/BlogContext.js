@@ -24,4 +24,4 @@ const deleteBlogPost = (dispatch) => {
   }
 }
 
-export const {Context,Provider} = createDataContext(blogReducer,{addBlogPost,deleteBlogPost},[]);
+export const {Context,Provider} = createDataContext(blogReducer,{addBlogPost,deleteBlogPost},[{title:"Deneme Post",content:"Deneme İçerik İçerik Boyutu Artıyor Bir de Böyle Deniyoruz Bunun Uzun Bir Yazı Olduğunu Varsayarak",id:1}]);
