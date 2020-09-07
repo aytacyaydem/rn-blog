@@ -8,7 +8,7 @@ const EditScreen = ({ navigation }) => {
   const id = navigation.getParam("id");
   const editPost = state.find((post) => post.id === id);
   
-  return <BlogForm />
+  return <BlogForm initialValues={{title:editPost.title,content:editPost.content}} onSubmit={(newTitle,newContent) => console.log(newTitle,newContent)}/>
 };
 
 const styles = StyleSheet.create({});
