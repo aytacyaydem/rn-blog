@@ -7,6 +7,14 @@ const blogReducer = (state,action) => {
       return [...state,{id:Math.floor(Math.random() * 999),title:action.payload.title,content:action.payload.content}]
     case "delete_blogpost":
       return state.filter(item => item.id !== action.payload) 
+    case "edit_blogpost":
+      return state.map((singlePost) => {
+        if (singlePost.id === action.payload.id){
+          console.log("koma hırrım buke")
+        }else {
+          console.log("ruken farisoğluna özgürlük")
+        }
+      })
     default:
       return state
   }
@@ -23,5 +31,9 @@ const deleteBlogPost = (dispatch) => {
     dispatch({type:"delete_blogpost",payload:id})
   }
 }
-
-export const {Context,Provider} = createDataContext(blogReducer,{addBlogPost,deleteBlogPost},[{title:"Deneme Post",content:"Deneme İçerik İçerik Boyutu Artıyor Bir de Böyle Deniyoruz Bunun Uzun Bir Yazı Olduğunu Varsayarak",id:1}]);
+const editBlogPost = (dispatch) => {
+  return (id,title,content) => {
+    dispatch({type:"edit_blogpost",payload:{id,title,content}})
+  }
+}
+export const {Context,Provider} = createDataContext(blogReducer,{addBlogPost,deleteBlogPost,editBlogPost},[{title:"Deneme Post",content:"Deneme İçerik İçerik Boyutu Artıyor Bir de Böyle Deniyoruz Bunun Uzun Bir Yazı Olduğunu Varsayarak",id:1}]);

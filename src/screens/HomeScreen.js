@@ -11,6 +11,7 @@ const HomeScreen = ({navigation}) => {
       <StatusBar barStyle="light-content" />
       <FlatList
         data={state}
+        keyExtractor={blogPost => blogPost.title}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity onPress={() => navigation.navigate("BlogContent",{id:item.id})}>
@@ -21,7 +22,7 @@ const HomeScreen = ({navigation}) => {
             </TouchableOpacity>
           )
         }}
-        keyExtractor={(post) => post.title}
+        
       />
     </View>
   );

@@ -2,8 +2,8 @@ import React,{useState} from "react"
 import {View,Text,StyleSheet,TextInput,Button} from "react-native"
 
 const BlogForm = ({onSubmit,initialValues}) => {
-    const [title,setTitle] = initialValues ? useState(initialValues.title) : useState("")
-    const [content,setContent] = initialValues ? useState(initialValues.content) : useState("")
+    const [title,setTitle] = useState(initialValues.title) 
+    const [content,setContent] = useState(initialValues.content)
     return (
         <View>
             <Text style={styles.label}>Enter Title</Text>
@@ -14,6 +14,14 @@ const BlogForm = ({onSubmit,initialValues}) => {
         </View>
      )
 }
+
+BlogForm.defaultProps = {
+    initialValues : {
+        title:"",
+        content:""
+    }
+}
+
 
 const styles = StyleSheet.create({
     input:{
