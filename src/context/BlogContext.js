@@ -8,11 +8,12 @@ const blogReducer = (state,action) => {
     case "delete_blogpost":
       return state.filter(item => item.id !== action.payload) 
     case "edit_blogpost":
-      return state.map((singlePost) => {
-        if (singlePost.id === action.payload.id){
-          console.log("koma hırrım buke")
-        }else {
-          console.log("ruken farisoğluna özgürlük")
+      return state.map((single) => {
+        debugger;
+        if(single.id===action.payload.id){
+          return action.payload
+        }else{
+          return state
         }
       })
     default:
