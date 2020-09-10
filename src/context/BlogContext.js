@@ -9,12 +9,7 @@ const blogReducer = (state,action) => {
       return state.filter(item => item.id !== action.payload) 
     case "edit_blogpost":
       return state.map((single) => {
-        debugger;
-        if(single.id===action.payload.id){
-          return action.payload
-        }else{
-          return state
-        }
+        return single.id === action.payload.id ? action.payload : single
       })
     default:
       return state
@@ -23,7 +18,7 @@ const blogReducer = (state,action) => {
 const addBlogPost = (dispatch) => {
   return (title,content,callback) => {
     dispatch({type:"add_blogpost",payload:{title,content}})
-    callback()
+    callback && callback()
   }
 }
 
@@ -33,8 +28,9 @@ const deleteBlogPost = (dispatch) => {
   }
 }
 const editBlogPost = (dispatch) => {
-  return (id,title,content) => {
+  return (id,title,content,callback) => {
     dispatch({type:"edit_blogpost",payload:{id,title,content}})
+    callback && callback()
   }
 }
 export const {Context,Provider} = createDataContext(blogReducer,{addBlogPost,deleteBlogPost,editBlogPost},[{title:"Deneme Post",content:"Deneme İçerik İçerik Boyutu Artıyor Bir de Böyle Deniyoruz Bunun Uzun Bir Yazı Olduğunu Varsayarak",id:1}]);

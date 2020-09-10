@@ -9,8 +9,8 @@ const EditScreen = ({ navigation }) => {
   const editPost = state.find((post) => post.id === id);
   
   return <BlogForm initialValues={{title:editPost.title,content:editPost.content}} onSubmit={(newTitle,newContent) => {
-    editBlogPost(id,newTitle,newContent)
-  }}/>
+    editBlogPost(id,newTitle,newContent,() => navigation.pop())
+  }}/> 
 };
 
 const styles = StyleSheet.create({});
