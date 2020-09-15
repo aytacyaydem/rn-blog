@@ -1,5 +1,5 @@
 import React, { useContext} from "react";
-import { View, StyleSheet, Text, FlatList,Button,TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, FlatList,TouchableOpacity } from "react-native";
 import { StatusBar } from "react-native";
 import {Context} from "../context/BlogContext";
 import {Feather} from "@expo/vector-icons"
